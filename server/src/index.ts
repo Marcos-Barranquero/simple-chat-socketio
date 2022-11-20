@@ -8,10 +8,19 @@ import { PORT } from './config'
 // Express and Socket.io server
 const app = express()
 const httpServer = http.createServer(app)
-const socketioServer = new SocketioServer(httpServer)
+
+const socketioConfig = {
+  cors: {
+    origin: 'http://localhost:5173',
+    methods: ['GET', 'POST'],
+  },
+}
+
+const socketioServer = new SocketioServer(httpServer, socketioConfig)
 
 socketioServer.on('connection', socket => {
   console.log('New client connected')
+  console.log(`Client id: ${socket.id}`)
   socket.on('disconnect', () => {
     console.log('Client disconnected')
   })
@@ -22,5 +31,5 @@ app.use(cors())
 app.use(morgan('dev'))
 
 // Start server
-app.listen(PORT)
+httpServer.listen(PORT)
 console.log(`Server started on port ${PORT}!`)
