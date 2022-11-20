@@ -1,11 +1,12 @@
 # simple-chat-socketio
 
-Simple chat with socketio and expre
+Simple chat with socketio and express
+
 Based on https://www.youtube.com/watch?v=C1_Rw_H7Q3A
 
 ## Install
 
-Run on the client and server folder `yarn install`
+Run `yarn install` on the client and server folder
 
 # Server
 
