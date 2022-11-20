@@ -20,10 +20,9 @@ const socketioServer = new SocketioServer(httpServer, socketioConfig)
 
 socketioServer.on('connection', socket => {
   console.log('New client connected')
-  console.log(`Client id: ${socket.id}`)
-  socket.on('disconnect', () => {
-    console.log('Client disconnected')
-  })
+  socket.on('disconnect', () => console.log('Client disconnected'))
+  socket.on('message', message => console.log(`Client ${socket.id} message: ${message}`))
+  socket.on('message', message => socket.broadcast.emit('message', message))
 })
 
 // Express config
