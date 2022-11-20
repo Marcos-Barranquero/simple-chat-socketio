@@ -1,27 +1,13 @@
-define("index", ["require", "exports"], function (require, exports) {
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+define("index", ["require", "exports", "express"], function (require, exports, express_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.Person = void 0;
-    var Person = /** @class */ (function () {
-        function Person(name, age) {
-            Object.defineProperty(this, "name", {
-                enumerable: true,
-                configurable: true,
-                writable: true,
-                value: name
-            });
-            Object.defineProperty(this, "age", {
-                enumerable: true,
-                configurable: true,
-                writable: true,
-                value: age
-            });
-            if (age < 0)
-                throw new Error('Age cant be negative');
-        }
-        return Person;
-    }());
-    exports.Person = Person;
+    express_1 = __importDefault(express_1);
+    var app = (0, express_1.default)();
+    app.listen(3000);
+    console.log('Server started on port 3000!');
 });
 // this file contains the calculator functions add, subtract, multiply, divide, and clear
 define("components/calculator", ["require", "exports"], function (require, exports) {
